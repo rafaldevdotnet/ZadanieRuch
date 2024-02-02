@@ -1,0 +1,125 @@
+﻿@*     
+        APM Automatyczne Maszyny Paczkowe
+        PSD - Punkt Własny
+        PSP PPP PSF PPK - punkty Partnerskie
+        PKN Stacja Orlen
+*@
+
+
+
+<h1>Wyślij Paczkę z RUCH</h1>
+<br />
+<div style="width:850px; float:initial">
+
+    <div style="width:400px; float:left">
+        <h3>Nadawca</h3>
+        <div>
+            <label>Imię</label>
+            @(Html.Kendo().TextBox()
+                .Name("SenderFirstName"))
+        </div>
+        <div>
+            <label>Nazwisko</label>
+            @(Html.Kendo().TextBox()
+                .Name("SenderLastName"))
+        </div>
+        <div>
+            <label>Ulica nr. domu/lokalu</label>
+            @(Html.Kendo().TextBox()
+                .Name("SenderStreet"))
+        </div>
+        <div>
+            <label>Kod Pocztowy</label>
+            @(Html.Kendo().TextBox()
+                .Name("SenderZipCode"))
+        </div>
+        <div>
+            <label>Miasto</label>
+            @(Html.Kendo().TextBox()
+                .Name("SenderCity"))
+        </div>
+    </div>
+    <div style="width:400px; float:right">
+        <h3>Odbiorca</h3>
+        <div>
+            <label>Imię</label>
+            @(Html.Kendo().TextBox()
+                .Name("RecipientFirstName"))
+        </div>
+        <div>
+            <label>Nazwisko</label>
+            @(Html.Kendo().TextBox()
+                .Name("RecipientLastName"))
+        </div>
+        <div>
+            <label>Ulica nr. domu/lokalu</label>
+            @(Html.Kendo().TextBox()
+                .Name("RecipientStreet"))
+        </div>
+        <div>
+            <label>Kod Pocztowy</label>
+            @(Html.Kendo().TextBox()
+                .Name("RecipientZipCode"))
+        </div>
+        <div>
+            <label>Miasto</label>
+            @(Html.Kendo().TextBox()
+                .Name("RecipientCity"))
+        </div>
+    </div>
+</div>
+<br />
+<div style="width:850px">
+    <h3>Znajdź punkty Ruch</h3>
+    <div>
+        <label>Miasto</label>
+        @(Html.Kendo().TextBox()
+            .Name("FindPoints")
+            
+            )
+    </div>
+    <div>
+        @(
+            Html.Kendo().ListView<ZadanieRuchSA.Model.PointsListView>()
+            .Name("listView")
+            .TagName("div")
+            .ClientTemplateId("template")
+            .Selectable()
+            .DataSource(dataSource => dataSource
+            .Ajax()
+            .Read(read => read.Url("Operations/GetPointsByPhrase").Data("additionalData"))
+            )
+            )
+    </div>
+    
+</div>
+<script type="text/x-kendo-tmpl" id="template">
+    <div>
+         <div>
+             <h3>#=CodePoint# #=NrPSD#</h3>
+             <p>#=ZippCode# #=City# #=StreetName#</p>
+         </div>
+         <div>
+           #=PointType# #=Description#
+         </div>
+         <hr />
+    </div>
+    
+</script>
+<script>
+    $(document).ready(function () {
+        $("#FindPoints").change(function onChange() {
+            var LW = $("#listView").data("kendoListView");
+            LW.dataSource.read();
+        });
+    });
+</script>
+ <script>
+     function additionalData() {
+        var textbox = $("#FindPoints").data("kendoTextBox");
+              var valueTB = textbox.value();
+              return {
+            id: valueTB
+              };
+          }
+ </script>
