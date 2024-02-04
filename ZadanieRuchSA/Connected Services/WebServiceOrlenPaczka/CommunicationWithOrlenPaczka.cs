@@ -26,5 +26,18 @@ namespace ZadanieRuchSA.Connected_Services.WebServiceOrlenPaczka
                 pointPwRs = points.Data.ToList();
             }
         }
+        public static byte[] Send(GenerateLabelBusinessPackRequest request)
+        {
+            request.PartnerID = _partnerId;
+            request.PartnerKey = _partnerKey;
+            request.PrintAdress = "1";
+            request.PrintType = "1";
+            request.BuildingNumber= "1";    
+            request.SenderBuildingNumber = "1";
+            var ws = new WebServicePwRSoapClient(WebServicePwRSoapClient.EndpointConfiguration.WebServicePwRSoap);
+            var pdf = ws.GenerateLabelBusinessPackAsync(request).Result;
+            return pdf.LabelData;
+
+        }
     }
 }

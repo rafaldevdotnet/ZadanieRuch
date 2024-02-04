@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Globalization;
+using Telerik.SvgIcons;
 using ZadanieRuchSA.Connected_Services.WebServiceOrlenPaczka;
 using ZadanieRuchSA.Model;
 
@@ -23,7 +24,10 @@ namespace ZadanieRuchSA.Controllers
         {
             if(!string.IsNullOrEmpty(id))
             {
-                var paczki = CommunicationWithOrlenPaczka.pointPwRs.Where(x => x.City.ToLower().Contains(id.ToLower()));
+                var paczki = CommunicationWithOrlenPaczka.pointPwRs.Where(x => x.City.ToLower().Contains(id.ToLower())
+                                                                               || x.DestinationCode.ToLower().Contains(id.ToLower())
+                                                                               || x.ZipCode.ToLower().Contains(id.ToLower())
+                                                                               );
                 var listPoints = new List<PointsListView>();
                 foreach (var item in paczki)
                 {
