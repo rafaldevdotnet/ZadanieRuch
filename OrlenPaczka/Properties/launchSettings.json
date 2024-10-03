@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "ZadanieRuchSA": {
+    "OrlenPaczka": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

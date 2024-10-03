@@ -21,7 +21,7 @@
     },
     "resourceName": {
       "type": "string",
-      "defaultValue": "ZadanieRuchSA20240202113222",
+      "defaultValue": "OrlenPaczka20240202113222",
       "metadata": {
         "description": "Name of the main resource to be created by this template."
       }

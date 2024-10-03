@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Globalization;
 using Telerik.SvgIcons;
-using ZadanieRuchSA.Connected_Services.WebServiceOrlenPaczka;
-using ZadanieRuchSA.Model;
+using OrlenPaczka.Connected_Services.WebServiceOrlenPaczka;
+using OrlenPaczka.Model;
 
-namespace ZadanieRuchSA.Controllers
+namespace OrlenPaczka.Controllers
 {
     public class OperationsController : Controller
     {

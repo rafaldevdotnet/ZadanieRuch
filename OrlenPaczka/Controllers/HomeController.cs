@@ -8,10 +8,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Telerik.SvgIcons;
 using WebServiceOrlenPaczka;
-using ZadanieRuchSA.Connected_Services.WebServiceOrlenPaczka;
-using ZadanieRuchSA.Model;
+using OrlenPaczka.Connected_Services.WebServiceOrlenPaczka;
+using OrlenPaczka.Model;
 
-namespace ZadanieRuchSA.Controllers
+namespace OrlenPaczka.Controllers
 {
     public class HomeController : Controller
     {

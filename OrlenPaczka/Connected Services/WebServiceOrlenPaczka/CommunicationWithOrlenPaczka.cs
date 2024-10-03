@@ -1,6 +1,6 @@
 ﻿using WebServiceOrlenPaczka;
 
-namespace ZadanieRuchSA.Connected_Services.WebServiceOrlenPaczka
+namespace OrlenPaczka.Connected_Services.WebServiceOrlenPaczka
 {
     public class CommunicationWithOrlenPaczka
     {

@@ -1,4 +1,4 @@
-﻿namespace ZadanieRuchSA.Model
+﻿namespace OrlenPaczka.Model
 {
     public class PointsListView
     {
